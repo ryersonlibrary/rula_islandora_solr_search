@@ -18,18 +18,25 @@
       class: 'simple-search-drawer',
       html: $('<a>', {
         href: '/advanced-search',
-        text: 'Advanced Search'
+        text: 'Advanced Search',
+        style: 'display: block;'
       }),
       style: 'display: none;'
     });
 
     $searchFormWrapper.append($advancedSearchLink);
 
-    // Show the advancedSearchLink element when the input is focused.
+    // Show the drawer when the input is focused
     $searchFormInput.focus(function() {
       $advancedSearchLink.show();    
     });
 
+    // When the input loses focus, hide the drawer UNLESS the 
+    // drawer was clicked
+    // TODO:  this is still a little bug, currently the entire bar
+    //        is a clickable link, I'd rather have only the text 
+    //        be clickable AND have the drawer not close when it is
+    //        clicked on
     $searchFormInput.blur(function(e) {
       if ( e.relatedTarget === null ) {
         $advancedSearchLink.hide();
