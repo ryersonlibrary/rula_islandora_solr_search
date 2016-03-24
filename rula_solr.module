@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * A block module that displays recent blog and forum posts.
+ */
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path 
+ *   Which path of the site we're using to display help
+ * @param arg 
+ *   Array that holds the current path as returned from arg() function
+ */
+function rula_solr_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#rula_solr":
+      return '<p>' . t("TODO: Fill me with helpful information!") . '</p>';
+      break;
+  }
+}

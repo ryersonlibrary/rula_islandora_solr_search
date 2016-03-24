@@ -1,0 +1,4 @@
+name = RULA Islandora Solr
+description = Custom extensions for the islandora_solr_search module
+core = 7.x
+scripts[] = js/advanced_search.js
