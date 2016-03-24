@@ -10,27 +10,39 @@
 (function ($) { 
   $( document ).ready(function() {
     // find the elements that we want to mess with
-    $search_form_wrapper = $('#block-islandora-solr-simple');
-    $search_form = $search_form_wrapper.find('form input[type="text"]');
+    $searchFormWrapper = $('#block-islandora-solr-simple');
+    $searchFormInput = $searchFormWrapper.find('form input[type="text"]');
 
     // Create the structure for the tacked on drawer!
-    $advanced_search_link = $('<div>', { 
+    $advancedSearchLink = $('<div>', { 
       class: 'simple-search-drawer',
       html: $('<a>', {
         href: '/advanced-search',
-        text: 'Advanced Search'
-      })
+        text: 'Advanced Search',
+        style: 'display: block;'
+      }),
+      style: 'display: none;'
     });
 
-    // Add the element DOM when input gets focus
-    $search_form.focus(function() {
-      $search_form_wrapper.append($advanced_search_link);      
+    $searchFormWrapper.append($advancedSearchLink);
+
+    // Show the drawer when the input is focused
+    $searchFormInput.focus(function() {
+      $advancedSearchLink.show();    
     });
 
-    // Remove the element from DOM when the input loses focus
-    $search_form.blur(function(){
-      $('.simple-search-drawer').remove();
+    // When the input loses focus, hide the drawer UNLESS the 
+    // drawer was clicked
+    // TODO:  this is still a little bug, currently the entire bar
+    //        is a clickable link, I'd rather have only the text 
+    //        be clickable AND have the drawer not close when it is
+    //        clicked on
+    $searchFormInput.blur(function(e) {
+      if ( e.relatedTarget === null ) {
+        $advancedSearchLink.hide();
+      }
     });
 
   });
+
 })(jQuery);
