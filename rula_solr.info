@@ -1,5 +1,6 @@
 name = RULA Islandora Solr
 dependencies[] = islandora_solr
 description = Custom extensions for the islandora_solr_search module
+package = RULA Islandora Extensions
 core = 7.x
 scripts[] = js/advanced_search.js
