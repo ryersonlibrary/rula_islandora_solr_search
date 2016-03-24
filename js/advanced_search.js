@@ -10,11 +10,11 @@
 (function ($) { 
   $( document ).ready(function() {
     // find the elements that we want to mess with
-    $search_form_wrapper = $('#block-islandora-solr-simple');
-    $search_form = $search_form_wrapper.find('form input[type="text"]');
+    $searchFormWrapper = $('#block-islandora-solr-simple');
+    $searchForm = $searchFormWrapper.find('form input[type="text"]');
 
     // Create the structure for the tacked on drawer!
-    $advanced_search_link = $('<div>', { 
+    $advancedSearchLink = $('<div>', { 
       class: 'simple-search-drawer',
       html: $('<a>', {
         href: '/advanced-search',
@@ -22,13 +22,13 @@
       })
     });
 
-    // Add the element DOM when input gets focus
-    $search_form.focus(function() {
-      $search_form_wrapper.append($advanced_search_link);      
+    // Show the advancedSearchLink element when the input is focused.
+    $searchForm.focus(function() {
+      $searchFormWrapper.append($advancedSearchLink);
     });
 
     // Remove the element from DOM when the input loses focus
-    $search_form.blur(function(){
+    $searchForm.blur(function() {
       $('.simple-search-drawer').remove();
     });
 
