@@ -19,7 +19,8 @@
       html: $('<a>', {
         class: 'advanced-search-link',
         href: '/advanced-search',
-        text: 'Advanced Search'
+        text: 'Advanced Search',
+        style: 'display: block'
       }),
       style: 'display: none;'
     });
@@ -46,7 +47,7 @@
         } else {
           $advancedSearchLink.hide();
         }
-      }, 1);
+      }, 25);
     });
 
   });
