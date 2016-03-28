@@ -17,9 +17,9 @@
     $advancedSearchLink = $('<div>', { 
       class: 'simple-search-drawer',
       html: $('<a>', {
+        class: 'advanced-search-link',
         href: '/advanced-search',
-        text: 'Advanced Search',
-        style: 'display: block;'
+        text: 'Advanced Search'
       }),
       style: 'display: none;'
     });
@@ -33,14 +33,20 @@
 
     // When the input loses focus, hide the drawer UNLESS the 
     // drawer was clicked
-    // TODO:  this is still a little bug, currently the entire bar
-    //        is a clickable link, I'd rather have only the text 
-    //        be clickable AND have the drawer not close when it is
-    //        clicked on
     $searchFormInput.blur(function(e) {
-      if ( e.relatedTarget === null ) {
-        $advancedSearchLink.hide();
-      }
+      // We need to use the setTimeout function here because of
+      // inconsistent behavior between browsers when the blur 
+      // event is invoked
+      setTimeout(function(){
+        var $target = $(document.activeElement);
+
+        if ( $target.hasClass('simple-search-drawer') ||
+             $target.hasClass('advanced-search-link') ) {
+          $searchFormInput.focus();
+        } else {
+          $advancedSearchLink.hide();
+        }
+      }, 1);
     });
 
   });
