@@ -47,7 +47,7 @@
         } else {
           $advancedSearchLink.hide();
         }
-      }, 25);
+      }, 150);
     });
 
   });
